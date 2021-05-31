@@ -42,7 +42,7 @@ router.get('/', authorisation, (req, res) => {
     });
 });
 
-//Creates a routed allowing user to edit post
+//Creates a route allowing user to edit post
 router.get('/edit/id', authorisation, (req,res) => {
     Post.findOne({
         where: {
@@ -83,3 +83,27 @@ router.get('/edit/id', authorisation, (req,res) => {
         res.status(500).json(err);
     });
 });
+
+// Creates a route allowing for the edit of the logged in user
+router.get('/edituser', authorisation, (req, res) => {
+    User.findOne({
+        attributes: { exclude: ['password'] },
+        where: {
+            id: req.session.user_id
+        }
+    })
+    .then(dbUserData => {
+        if(!dbUserData) {
+            res.status(404).json({message: 'No user found with this id'});
+            return;
+        }
+        const user =dbUserData.get({ plain: true });
+        res.render('edit-user', {user, loggedIn: true});
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
+});
+
+module.exports = router;
