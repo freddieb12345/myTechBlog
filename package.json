@@ -1,0 +1,34 @@
+{
+  "name": "mytechblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "bulma": "^0.9.0",
+    "connect-session-sequelize": "^6.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4",
+    "sequelize": "^5.21.13"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freddieb12345/myTechBlog.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freddieb12345/myTechBlog/issues"
+  },
+  "homepage": "https://github.com/freddieb12345/myTechBlog#readme"
+}
