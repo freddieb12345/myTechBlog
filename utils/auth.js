@@ -1,5 +1,5 @@
 //Helper function that redirects unauthorised users to the login page
-const withAuth = (req, res, next) => {
+const authorisation = (req, res, next) => {
     if (!req.session.user_id) {
       res.redirect('/login');
     } else {
@@ -7,4 +7,4 @@ const withAuth = (req, res, next) => {
     }
   };
   
-  module.exports = withAuth;
+  module.exports = authorisation;
