@@ -75,5 +75,41 @@ router.get('/:id', (req, res) => {
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
-        })
-})
+        });
+});
+
+//POST route to create a new route
+router.post('/', authorisation, (req, res) => {
+    Post.create({
+        title: req.body.title,
+        post_text: req.body.post_text,
+        user_id: req.session.user_id
+    })
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+//PUT route to update a post's title or text
+router.put('/:id', authorisation, (req,res) => {
+    Post.update(req.body,
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+    .then(dbPostData => {
+        if(!dbPostData) {
+            res.status(404).json({ message: 'No post found with this id'});
+            return;
+        }
+        res.json(dbPostData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
+});
