@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 //POST comments route
-router.postMessage('/', authorisation, (req,res) => {
+router.post('/', authorisation, (req,res) => {
     if(req.session) {
         Comment.create({
             comment_text:req.body.comment_text,

@@ -6,13 +6,13 @@ const path = require('path'); //Importing path module
 const helpers = require('./utils/helpers'); //Importing the handlebar helpers
 const exphbs = require('express-handlebars'); //Importing handlebar templates for front end
 const hbs = exphbs.create({ helpers}); // Initialize the handlebars
-const session = require ('express=session'); //Import express session to handle cookies
+const session = require ('express-session'); //Import express session to handle cookies
 require('dotenv').config() //Importing dotenv file for server login info
 const SequelizeStore = require('connect-session-sequelize')(session.Store);//Import sequelizestore to save the session so the user can stay logged in between uses 
 
 //Create the express session
 const sess = {
-    secret: process.env.DB_SESSION_SECRET,
+    secret: 'secret',
     cookie: {maxAge: 7200000},
     resave: false,
     saveUninitialized: true,
