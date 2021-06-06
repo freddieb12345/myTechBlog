@@ -12,7 +12,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);//Imp
 
 //Create the express session
 const sess = {
-    secret: 'secret',
+    secret: process.env.DB_SESSION_SECRET,
     cookie: {maxAge: 7200000},
     resave: false,
     saveUninitialized: true,
