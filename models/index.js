@@ -1,11 +1,11 @@
 // An index file to gather the models and export them for use
 
 // User model
-const User = require('./User');
+const User = require('./user');
 // Post model
-const Post = require('./Post');
+const Post = require('./post');
 // Comment model
-const Comment = require('./Comment');
+const Comment = require('./comment');
 
 // Create associations between the models
 // User-Post relationship
